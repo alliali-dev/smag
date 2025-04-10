@@ -93,10 +93,12 @@
                                     <label class="form-label">Genre</label>
                                     <select class="form-control @error('sexe') is-invalid @enderror" name="sexe">
                                         <option value="" selected disabled>Choisissez le sexe</option>
-                                        <option value="H">Homme</option>
+                                        <option value="M">Homme</option>
                                         <option value="F">Femme</option>
                                     </select>
-                                    @error('sexe') <span class="text text-danger">{{$message}}</span>@enderror
+                                    @error('sexe')
+                                    <span class="text text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -113,8 +115,9 @@
                                     <label class="form-label" for="matricule">Matricule</label>
                                     <input type="text" class="form-control @error('matricule') is-invalid @enderror"
                                         name="matricule" value="{{old('matricule')}}" id="matricule"
-                                        pattern="/^[0-9]{8}?[A-Z]{1}$/">
-                                    @error('matricule') <span class="text text-danger">{{$message}}</span>@enderror
+                                        pattern="[0-9]{8}[A-Z]{1}" title="8 chiffres suivi d'une lettre majuscule.">
+                                    @error('matricule')
+                                    <span class="text text-danger">{{$message}}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -128,7 +131,9 @@
                                     <label for="nonred">Non
                                         <input type="radio" class="form-radio @error('redoublant') is-invalid @enderror"
                                             name="redoublant" id="nonred" value="Non" checked>
-                                        @error('redoublant') <span class="text text-danger">{{$message}}</span>@enderror
+                                        @error('redoublant')
+                                        <span class="text text-danger">
+                                            {{$message}}</span>@enderror
                                     </label>
                                 </div>
                             </div>

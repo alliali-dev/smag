@@ -13,9 +13,28 @@ return new class extends Migration
     {
         Schema::create('etablissements', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
-            $table->string('code');
+            $table->string('nom');
+            $table->string('statut')->nullable();
+            $table->string('code')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('adresse_postale')->nullable();
+            $table->string('localisation')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('region')->nullable();
+            $table->string('departement')->nullable();
+            $table->string('ville')->nullable();
+            $table->string('commune')->nullable();
+            $table->string('quartier')->nullable();
+            $table->integer('created_by')->nullable();
             $table->timestamps();
+        });
+
+
+        Schema::table('etablissements', function (Blueprint $table) {
+            //
+            $table->foreignId('examen_id')->references('id')->on('examens')->nullable();
         });
     }
 

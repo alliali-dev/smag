@@ -78,8 +78,8 @@
                     <span class="nav-text">Niveaux</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('niveaus.create')}}">Ajouter</a></li>
-                    <li><a href="{{route('niveaus.index')}}">Liste</a></li>
+                    <li><a href="{{route('niveaux.create')}}">Ajouter</a></li>
+                    <li><a href="{{route('niveaux.index')}}">Liste</a></li>
                 </ul>
             </li>
             <li>
@@ -189,8 +189,8 @@
                     <span class="nav-text">Niveaux</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('niveaus.create')}}">Ajouter</a></li>
-                    <li><a href="{{route('niveaus.index')}}">Liste</a></li>
+                    <li><a href="{{route('niveaux.create')}}">Ajouter</a></li>
+                    <li><a href="{{route('niveaux.index')}}">Liste</a></li>
                 </ul>
             </li>
             <li>

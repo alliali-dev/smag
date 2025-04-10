@@ -18,29 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `s_management_db`
+-- Base de données : 's_management_db'
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annee_academiques`
+-- Structure de la table 'annee_academiques'
 --
 
-CREATE TABLE `annee_academiques` (
-  `id` bigint(20) NOT NULL,
-  `libelle` varchar(255) NOT NULL,
-  `debut_annee` varchar(255) DEFAULT NULL,
-  `fin_annee` varchar(255) DEFAULT NULL,
-  `created_at` varchar(255) NOT NULL,
-  `updated_at` varchar(255) NOT NULL DEFAULT current_timestamp()
+CREATE TABLE 'annee_academiques' (
+  'id' int(12) NOT NULL AUTO_INCREMENT,
+  'libelle' varchar(255) NOT NULL,
+  'debut_annee' varchar(255) DEFAULT NULL,
+  'fin_annee' varchar(255) DEFAULT NULL,
+  'created_at' varchar(255) NOT NULL,
+  'updated_at' varchar(255) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `annee_academiques`
+-- Déchargement des données de la table 'annee_academiques'
 --
 
-INSERT INTO `annee_academiques` (`id`, `libelle`, `debut_annee`, `fin_annee`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'annee_academiques' ('id', 'libelle', 'debut_annee', 'fin_annee', 'created_at', 'updated_at') VALUES
 (1, '2023-2024', '18-09-2023', '2024-06-14', '20240120', '2024-08-20 15:29:23'),
 (2, '2024-2025', '16-09-2024', '2025-06-20', '20240120', '2024-08-20 15:29:23'),
 (3, '2025-2026', '2025-08-21', '2026-09-20', '2024-08-20 15:29:33', '2024-08-21 15:30:15'),
@@ -49,44 +49,44 @@ INSERT INTO `annee_academiques` (`id`, `libelle`, `debut_annee`, `fin_annee`, `c
 -- --------------------------------------------------------
 
 --
--- Structure de la table `belletins`
+-- Structure de la table 'belletins'
 --
 
-CREATE TABLE `belletins` (
-  `id` int(12) NOT NULL,
-  `discipline_id` int(11) DEFAULT NULL,
-  `coef_disc` float DEFAULT NULL,
-  `eleve_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `moy` float DEFAULT NULL,
-  `moy_coef` float DEFAULT NULL,
-  `rang_mat` varchar(255) DEFAULT NULL,
-  `appreciation` varchar(255) DEFAULT NULL,
-  `periode_id` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'belletins' (
+  'id' int(12) NOT NULL,
+  'discipline_id' int(11) DEFAULT NULL,
+  'coef_disc' float DEFAULT NULL,
+  'eleve_id' int(11) DEFAULT NULL,
+  'user_id' int(11) DEFAULT NULL,
+  'moy' float DEFAULT NULL,
+  'moy_coef' float DEFAULT NULL,
+  'rang_mat' varchar(255) DEFAULT NULL,
+  'appreciation' varchar(255) DEFAULT NULL,
+  'periode_id' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `classes`
+-- Structure de la table 'classes'
 --
 
-CREATE TABLE `classes` (
-  `id` bigint(20) NOT NULL,
-  `libelle` varchar(255) NOT NULL,
-  `effectif_c` int(50) DEFAULT NULL,
-  `niveau_id` bigint(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'classes' (
+  'id' bigint(20) NOT NULL,
+  'libelle' varchar(255) NOT NULL,
+  'effectif_c' int(50) DEFAULT NULL,
+  'niveau_id' bigint(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `classes`
+-- Déchargement des données de la table 'classes'
 --
 
-INSERT INTO `classes` (`id`, `libelle`, `effectif_c`, `niveau_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'classes' ('id', 'libelle', 'effectif_c', 'niveau_id', 'created_at', 'updated_at') VALUES
 (1, '6eme5', 15, 1, '2024-08-29 07:05:26', '2024-08-29 07:05:26'),
 (2, '5eme5', 7, 1, '20240120', '20240120'),
 (3, 'Tle D', 23, 7, '20240302', '20240302'),
@@ -99,23 +99,23 @@ INSERT INTO `classes` (`id`, `libelle`, `effectif_c`, `niveau_id`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cycles`
+-- Structure de la table 'cycles'
 --
 
-CREATE TABLE `cycles` (
-  `id` bigint(20) NOT NULL,
-  `libelle` varchar(255) NOT NULL,
-  `annee_academique_id` bigint(20) DEFAULT NULL,
-  `etablissement_id` bigint(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'cycles' (
+  'id' bigint(20) NOT NULL,
+  'libelle' varchar(255) NOT NULL,
+  'annee_academique_id' bigint(20) DEFAULT NULL,
+  'etablissement_id' bigint(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `cycles`
+-- Déchargement des données de la table 'cycles'
 --
 
-INSERT INTO `cycles` (`id`, `libelle`, `annee_academique_id`, `etablissement_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'cycles' ('id', 'libelle', 'annee_academique_id', 'etablissement_id', 'created_at', 'updated_at') VALUES
 (1, '1er Cycle', 1, 1, '20240303', '20240303'),
 (2, '2e Cycle', 1, 1, '20240303', '20240303'),
 (3, '1er Cycle', 2, 9, '20240303', '20240303'),
@@ -127,22 +127,22 @@ INSERT INTO `cycles` (`id`, `libelle`, `annee_academique_id`, `etablissement_id`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `details`
+-- Structure de la table 'details'
 --
 
-CREATE TABLE `details` (
-  `id` int(20) NOT NULL,
-  `nom_detail` varchar(255) DEFAULT NULL,
-  `discipline_id` int(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'details' (
+  'id' int(20) NOT NULL,
+  'nom_detail' varchar(255) DEFAULT NULL,
+  'discipline_id' int(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `details`
+-- Déchargement des données de la table 'details'
 --
 
-INSERT INTO `details` (`id`, `nom_detail`, `discipline_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'details' ('id', 'nom_detail', 'discipline_id', 'created_at', 'updated_at') VALUES
 (1, 'Composition Française', 1, '20240604', '20240604'),
 (2, 'Dictée question', 1, '20240604', '20240604'),
 (3, 'Expression Ecrite', 1, '20240604', '20240604');
@@ -150,22 +150,22 @@ INSERT INTO `details` (`id`, `nom_detail`, `discipline_id`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Structure de la table `disciplines`
+-- Structure de la table 'disciplines'
 --
 
-CREATE TABLE `disciplines` (
-  `id` bigint(20) NOT NULL,
-  `libelle` varchar(255) NOT NULL,
-  `type_disc` varchar(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'disciplines' (
+  'id' bigint(20) NOT NULL,
+  'libelle' varchar(255) NOT NULL,
+  'type_disc' varchar(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `disciplines`
+-- Déchargement des données de la table 'disciplines'
 --
 
-INSERT INTO `disciplines` (`id`, `libelle`, `type_disc`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'disciplines' ('id', 'libelle', 'type_disc', 'created_at', 'updated_at') VALUES
 (1, 'Anglais', 'Lettre', '2024-06-17 12:29:03', '2024-06-17 12:29:03'),
 (2, 'Histoire-Geographie', 'Lettre', '2024-06-17 12:29:03', '2024-06-17 12:29:03'),
 (3, 'Français', 'Lettre', '2024-06-17 12:29:03', '2024-06-17 12:29:03'),
@@ -187,33 +187,33 @@ INSERT INTO `disciplines` (`id`, `libelle`, `type_disc`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `eleves`
+-- Structure de la table 'eleves'
 --
 
-CREATE TABLE `eleves` (
-  `id` bigint(20) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenoms` varchar(255) DEFAULT NULL,
-  `date_nais` varchar(255) DEFAULT NULL,
-  `lieu_nais` varchar(255) DEFAULT NULL,
-  `sexe` varchar(255) DEFAULT NULL,
-  `nationalite` varchar(100) DEFAULT NULL,
-  `matricule` varchar(255) DEFAULT NULL,
-  `redoublant` varchar(10) DEFAULT NULL,
-  `regime` varchar(50) DEFAULT NULL,
-  `affecte` varchar(10) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `classe_id` bigint(20) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'eleves' (
+  'id' bigint(20) NOT NULL,
+  'nom' varchar(255) DEFAULT NULL,
+  'prenoms' varchar(255) DEFAULT NULL,
+  'date_nais' varchar(255) DEFAULT NULL,
+  'lieu_nais' varchar(255) DEFAULT NULL,
+  'sexe' varchar(255) DEFAULT NULL,
+  'nationalite' varchar(100) DEFAULT NULL,
+  'matricule' varchar(255) DEFAULT NULL,
+  'redoublant' varchar(10) DEFAULT NULL,
+  'regime' varchar(50) DEFAULT NULL,
+  'affecte' varchar(10) NOT NULL,
+  'photo' varchar(255) DEFAULT NULL,
+  'classe_id' bigint(20) DEFAULT NULL,
+  'created_by' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `eleves`
+-- Déchargement des données de la table 'eleves'
 --
 
-INSERT INTO `eleves` (`id`, `nom`, `prenoms`, `date_nais`, `lieu_nais`, `sexe`, `nationalite`, `matricule`, `redoublant`, `regime`, `affecte`, `photo`, `classe_id`, `created_by`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'eleves' ('id', 'nom', 'prenoms', 'date_nais', 'lieu_nais', 'sexe', 'nationalite', 'matricule', 'redoublant', 'regime', 'affecte', 'photo', 'classe_id', 'created_by', 'created_at', 'updated_at') VALUES
 (1, 'KOUAME', 'N\'guessan Bedel', '1990-04-07', 'Tiebissou', 'H', 'Ivoirienne', '07055027P', 'Non', 'Boursier', 'Oui', 'photo_KOFFI_1724348347_cdELqfAsaR.jpg', 6, 36, '20240120', '20240302'),
 (2, 'ALLIALI', 'Nogues', '01-01-1996', 'Cocody', 'H', 'Ivoirienne', '07055027R', 'Non', 'Boursier', 'Oui', 'IMG_20220718_130757~2.jpg', 1, NULL, '20240120', '20240302'),
 (4, 'ALLIALI', 'Ahou rosalie', '01-03-1988', 'Didievi', 'F', 'Ivoirienne', '06012283R', 'Non', 'Non Boursier', 'Oui', 'photo_KOFFI_1724348347_cdELqfAsaR.jpg', 6, 36, '20240302', '20240302'),
@@ -224,35 +224,35 @@ INSERT INTO `eleves` (`id`, `nom`, `prenoms`, `date_nais`, `lieu_nais`, `sexe`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etablissements`
+-- Structure de la table 'etablissements'
 --
 
-CREATE TABLE `etablissements` (
-  `id` bigint(20) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `statut` varchar(255) NOT NULL,
-  `code` varchar(255) NOT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `adresse_postale` varchar(255) DEFAULT NULL,
-  `localisation` varchar(255) DEFAULT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `region` varchar(255) DEFAULT NULL,
-  `departement` varchar(255) DEFAULT NULL,
-  `ville` varchar(255) DEFAULT NULL,
-  `commune` varchar(255) DEFAULT NULL,
-  `quartier` varchar(255) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'etablissements' (
+  'id' bigint(20) NOT NULL,
+  'nom' varchar(255) NOT NULL,
+  'statut' varchar(255) NOT NULL,
+  'code' varchar(255) NOT NULL,
+  'telephone' varchar(255) DEFAULT NULL,
+  'email' varchar(255) DEFAULT NULL,
+  'adresse_postale' varchar(255) DEFAULT NULL,
+  'localisation' varchar(255) DEFAULT NULL,
+  'logo' varchar(255) DEFAULT NULL,
+  'photo' varchar(255) DEFAULT NULL,
+  'region' varchar(255) DEFAULT NULL,
+  'departement' varchar(255) DEFAULT NULL,
+  'ville' varchar(255) DEFAULT NULL,
+  'commune' varchar(255) DEFAULT NULL,
+  'quartier' varchar(255) DEFAULT NULL,
+  'created_by' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `etablissements`
+-- Déchargement des données de la table 'etablissements'
 --
 
-INSERT INTO `etablissements` (`id`, `nom`, `statut`, `code`, `telephone`, `email`, `adresse_postale`, `localisation`, `logo`, `photo`, `region`, `departement`, `ville`, `commune`, `quartier`, `created_by`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'etablissements' ('id', 'nom', 'statut', 'code', 'telephone', 'email', 'adresse_postale', 'localisation', 'logo', 'photo', 'region', 'departement', 'ville', 'commune', 'quartier', 'created_by', 'created_at', 'updated_at') VALUES
 (1, 'Jules verne', 'Privé', '00652', '0793637373', 'jv@gmail.com', ' BP 02 COCODY 09', NULL, 'jw.PNG', NULL, 'Lagunes', 'Abidjan sud', 'Abidjan', 'Cocody', 'Lauriers', NULL, NULL, NULL),
 (2, 'Sdsd', 'Public', '54545', '2344234234', 'dsd@yahoo.com', 'dvfd', NULL, 'image.png', NULL, 'Bfgfg', 'Ggfgtf', 'Utyty', 'Thtrhth', 'Tthty', NULL, NULL, NULL),
 (3, 'College Moderne Didievi', 'Semi-privé', '445455', '5344344344', 'cmd@hotmail.com', 'BP 89 Didievi', NULL, NULL, NULL, 'Bcvvbcbdf', 'Fgdfgdfggf', 'Gfhhf', 'Fghfghgh', 'Ghgfhff', NULL, '2024-08-24 11:50:47', '2024-08-24 11:50:47'),
@@ -262,27 +262,27 @@ INSERT INTO `etablissements` (`id`, `nom`, `statut`, `code`, `telephone`, `email
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evaluations`
+-- Structure de la table 'evaluations'
 --
 
-CREATE TABLE `evaluations` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `coef` float DEFAULT NULL,
-  `discipline_id` int(11) DEFAULT NULL,
-  `coef_disc` float DEFAULT NULL,
-  `classe_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `periode_id` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT current_timestamp(),
-  `updated_at` varchar(255) DEFAULT current_timestamp()
+CREATE TABLE 'evaluations' (
+  'id' int(11) UNSIGNED NOT NULL,
+  'type' varchar(255) DEFAULT NULL,
+  'coef' float DEFAULT NULL,
+  'discipline_id' int(11) DEFAULT NULL,
+  'coef_disc' float DEFAULT NULL,
+  'classe_id' int(11) DEFAULT NULL,
+  'user_id' int(11) DEFAULT NULL,
+  'periode_id' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT current_timestamp(),
+  'updated_at' varchar(255) DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `evaluations`
+-- Déchargement des données de la table 'evaluations'
 --
 
-INSERT INTO `evaluations` (`id`, `type`, `coef`, `discipline_id`, `coef_disc`, `classe_id`, `user_id`, `periode_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'evaluations' ('id', 'type', 'coef', 'discipline_id', 'coef_disc', 'classe_id', 'user_id', 'periode_id', 'created_at', 'updated_at') VALUES
 (1, 'Interrogation', 1, 2, 2, 6, 33, 4, '2024-09-30 11:34:18', '2024-09-30 11:34:18'),
 (2, 'Devoir de niveau', 2, 2, 2, 6, 33, 4, '2024-09-30 11:36:40', '2024-09-30 11:36:40'),
 (3, 'Devoir de niveau', 2, 1, 2, 1, 33, 5, '2024-10-22 14:31:12', '2024-10-22 14:31:12');
@@ -290,39 +290,39 @@ INSERT INTO `evaluations` (`id`, `type`, `coef`, `discipline_id`, `coef_disc`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `failed_jobs`
+-- Structure de la table 'failed_jobs'
 --
 
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+CREATE TABLE 'failed_jobs' (
+  'id' bigint(20) UNSIGNED NOT NULL,
+  'uuid' varchar(255) NOT NULL,
+  'connection' text NOT NULL,
+  'queue' text NOT NULL,
+  'payload' longtext NOT NULL,
+  'exception' longtext NOT NULL,
+  'failed_at' timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `intervenir`
+-- Structure de la table 'intervenir'
 --
 
-CREATE TABLE `intervenir` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  `classe_id` bigint(20) DEFAULT NULL,
-  `pp` tinyint(1) DEFAULT 0,
-  `created_at` varchar(255) DEFAULT current_timestamp(),
-  `updated_at` varchar(255) DEFAULT current_timestamp()
+CREATE TABLE 'intervenir' (
+  'id' bigint(20) NOT NULL,
+  'user_id' bigint(20) DEFAULT NULL,
+  'classe_id' bigint(20) DEFAULT NULL,
+  'pp' tinyint(1) DEFAULT 0,
+  'created_at' varchar(255) DEFAULT current_timestamp(),
+  'updated_at' varchar(255) DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `intervenir`
+-- Déchargement des données de la table 'intervenir'
 --
 
-INSERT INTO `intervenir` (`id`, `user_id`, `classe_id`, `pp`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'intervenir' ('id', 'user_id', 'classe_id', 'pp', 'created_at', 'updated_at') VALUES
 (1, 6, 1, 0, '2024-08-29 21:28:57', '2024-08-29 21:28:57'),
 (2, 6, 2, 0, '2024-08-29 21:28:57', '2024-08-29 21:28:57'),
 (3, 27, 2, 0, '2024-08-29 21:28:57', '2024-08-29 21:28:57'),
@@ -334,20 +334,20 @@ INSERT INTO `intervenir` (`id`, `user_id`, `classe_id`, `pp`, `created_at`, `upd
 -- --------------------------------------------------------
 
 --
--- Structure de la table `migrations`
+-- Structure de la table 'migrations'
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
+CREATE TABLE 'migrations' (
+  'id' int(10) UNSIGNED NOT NULL,
+  'migration' varchar(255) NOT NULL,
+  'batch' int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `migrations`
+-- Déchargement des données de la table 'migrations'
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+INSERT INTO 'migrations' ('id', 'migration', 'batch') VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
@@ -360,41 +360,41 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `moyennes`
+-- Structure de la table 'moyennes'
 --
 
-CREATE TABLE `moyennes` (
-  `id` int(12) NOT NULL,
-  `moy` varchar(255) DEFAULT NULL,
-  `moy_coef` varchar(255) DEFAULT NULL,
-  `rang` varchar(255) DEFAULT NULL,
-  `appreciation` varchar(255) DEFAULT NULL,
-  `periode_id` int(11) DEFAULT NULL,
-  `discipline_id` int(11) DEFAULT NULL,
-  `eleve_id` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT current_timestamp(),
-  `updated_at` varchar(255) DEFAULT current_timestamp()
+CREATE TABLE 'moyennes' (
+  'id' int(12) NOT NULL,
+  'moy' varchar(255) DEFAULT NULL,
+  'moy_coef' varchar(255) DEFAULT NULL,
+  'rang' varchar(255) DEFAULT NULL,
+  'appreciation' varchar(255) DEFAULT NULL,
+  'periode_id' int(11) DEFAULT NULL,
+  'discipline_id' int(11) DEFAULT NULL,
+  'eleve_id' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT current_timestamp(),
+  'updated_at' varchar(255) DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `niveaus`
+-- Structure de la table 'niveaus'
 --
 
-CREATE TABLE `niveaus` (
-  `id` bigint(20) NOT NULL,
-  `libelle` varchar(255) NOT NULL,
-  `cycle_id` bigint(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'niveaus' (
+  'id' bigint(20) NOT NULL,
+  'libelle' varchar(255) NOT NULL,
+  'cycle_id' bigint(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `niveaus`
+-- Déchargement des données de la table 'niveaus'
 --
 
-INSERT INTO `niveaus` (`id`, `libelle`, `cycle_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'niveaus' ('id', 'libelle', 'cycle_id', 'created_at', 'updated_at') VALUES
 (1, '6ème', 3, '20240604', '20240604'),
 (2, '5ème', 3, '20240604', '20240604'),
 (3, '4ème', 1, '20240604', '20240604'),
@@ -419,23 +419,23 @@ INSERT INTO `niveaus` (`id`, `libelle`, `cycle_id`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notes`
+-- Structure de la table 'notes'
 --
 
-CREATE TABLE `notes` (
-  `id` int(12) NOT NULL,
-  `note` varchar(255) DEFAULT NULL,
-  `evaluation_id` int(11) DEFAULT NULL,
-  `eleve_id` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT current_timestamp(),
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'notes' (
+  'id' int(12) NOT NULL,
+  'note' varchar(255) DEFAULT NULL,
+  'evaluation_id' int(11) DEFAULT NULL,
+  'eleve_id' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT current_timestamp(),
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `notes`
+-- Déchargement des données de la table 'notes'
 --
 
-INSERT INTO `notes` (`id`, `note`, `evaluation_id`, `eleve_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'notes' ('id', 'note', 'evaluation_id', 'eleve_id', 'created_at', 'updated_at') VALUES
 (1, '12.00', 1, 4, '2024-09-30 11:34:41', '2024-09-30 11:34:41'),
 (2, '14.00', 1, 1, '2024-09-30 11:34:56', '2024-09-30 11:34:56'),
 (3, '16.50', 2, 4, '2024-10-02 13:27:21', '2024-10-02 13:27:21'),
@@ -445,40 +445,40 @@ INSERT INTO `notes` (`id`, `note`, `evaluation_id`, `eleve_id`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notes_old`
+-- Structure de la table 'notes_old'
 --
 
-CREATE TABLE `notes_old` (
-  `id` bigint(20) NOT NULL,
-  `note1` varchar(255) DEFAULT NULL,
-  `coef_n1` int(11) DEFAULT NULL,
-  `note2` varchar(255) DEFAULT NULL,
-  `coef_n2` int(11) DEFAULT NULL,
-  `note3` varchar(255) DEFAULT NULL,
-  `coef_n3` int(11) DEFAULT NULL,
-  `note4` varchar(255) DEFAULT NULL,
-  `coef_n4` int(11) DEFAULT NULL,
-  `note5` varchar(255) DEFAULT NULL,
-  `coef_n5` int(11) DEFAULT NULL,
-  `note6` varchar(255) DEFAULT NULL,
-  `coef_n6` int(11) DEFAULT NULL,
-  `note7` varchar(255) DEFAULT NULL,
-  `coef_n7` int(11) DEFAULT NULL,
-  `eleve_id` bigint(20) DEFAULT NULL,
-  `discipline_id` bigint(20) DEFAULT NULL,
-  `coefDisci` int(8) DEFAULT NULL,
-  `moy` double DEFAULT NULL,
-  `appreciation` varchar(255) DEFAULT NULL,
-  `rangEleve` varchar(8) DEFAULT NULL,
-  `period` int(20) DEFAULT NULL,
-  `user_id` bigint(20) DEFAULT NULL
+CREATE TABLE 'notes_old' (
+  'id' bigint(20) NOT NULL,
+  'note1' varchar(255) DEFAULT NULL,
+  'coef_n1' int(11) DEFAULT NULL,
+  'note2' varchar(255) DEFAULT NULL,
+  'coef_n2' int(11) DEFAULT NULL,
+  'note3' varchar(255) DEFAULT NULL,
+  'coef_n3' int(11) DEFAULT NULL,
+  'note4' varchar(255) DEFAULT NULL,
+  'coef_n4' int(11) DEFAULT NULL,
+  'note5' varchar(255) DEFAULT NULL,
+  'coef_n5' int(11) DEFAULT NULL,
+  'note6' varchar(255) DEFAULT NULL,
+  'coef_n6' int(11) DEFAULT NULL,
+  'note7' varchar(255) DEFAULT NULL,
+  'coef_n7' int(11) DEFAULT NULL,
+  'eleve_id' bigint(20) DEFAULT NULL,
+  'discipline_id' bigint(20) DEFAULT NULL,
+  'coefDisci' int(8) DEFAULT NULL,
+  'moy' double DEFAULT NULL,
+  'appreciation' varchar(255) DEFAULT NULL,
+  'rangEleve' varchar(8) DEFAULT NULL,
+  'period' int(20) DEFAULT NULL,
+  'user_id' bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `notes_old`
+-- Déchargement des données de la table 'notes_old'
 --
 
-INSERT INTO `notes_old` (`id`, `note1`, `coef_n1`, `note2`, `coef_n2`, `note3`, `coef_n3`, `note4`, `coef_n4`, `note5`, `coef_n5`, `note6`, `coef_n6`, `note7`, `coef_n7`, `eleve_id`, `discipline_id`, `coefDisci`, `moy`, `appreciation`, `rangEleve`, `period`, `user_id`) VALUES
+INSERT INTO 'notes_old' ('id', 'note1', 'coef_n1', 'note2', 'coef_n2', 'note3', 'coef_n3', 'note4', 'coef_n4', 'note5', 'coef_n5', 'note6', 'coef_n6', 'note7', 'coef_n7', 'eleve_id', 'discipline_id', 'coefDisci', 'moy', 'appreciation', 'rangEleve', 'period', 'user_id') VALUES
 (1, '17.5', 2, '15', 1, '12.75', 1, '13', 1, '16', 1, '16', 1, '11.5', 1, 2, 8, 2, 14.91, NULL, '1 er', NULL, 6),
 (2, '13.5', 2, '15', 2, '14', 3, '18', 1, '12.5', 4, '1', 1, '1', 1, 2, 9, 3, 12.07, 'Bien', '1 er', 1, 6),
 (5, '11', 4, '13', 4, '14', 1, '10', 1, '1', 1, '1', 1, '1', 1, 1, 8, NULL, 9.46, NULL, '4 è', NULL, 6),
@@ -490,50 +490,50 @@ INSERT INTO `notes_old` (`id`, `note1`, `coef_n1`, `note2`, `coef_n2`, `note3`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parcours`
+-- Structure de la table 'parcours'
 --
 
-CREATE TABLE `parcours` (
-  `id` int(12) NOT NULL,
-  `eleve_id` int(11) DEFAULT NULL,
-  `classe_id` int(11) DEFAULT NULL,
-  `anne_academique_id` int(11) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT current_timestamp(),
-  `updated_at` varchar(255) DEFAULT current_timestamp()
+CREATE TABLE 'parcours' (
+  'id' int(12) NOT NULL,
+  'eleve_id' int(11) DEFAULT NULL,
+  'classe_id' int(11) DEFAULT NULL,
+  'anne_academique_id' int(11) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT current_timestamp(),
+  'updated_at' varchar(255) DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `password_reset_tokens`
+-- Structure de la table 'password_reset_tokens'
 --
 
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+CREATE TABLE 'password_reset_tokens' (
+  'email' varchar(255) NOT NULL,
+  'token' varchar(255) NOT NULL,
+  'created_at' timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `periodes`
+-- Structure de la table 'periodes'
 --
 
-CREATE TABLE `periodes` (
-  `id` int(20) NOT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `libelle` varchar(80) DEFAULT NULL,
-  `annee_academique_id` int(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'periodes' (
+  'id' int(20) NOT NULL,
+  'type' varchar(255) DEFAULT NULL,
+  'libelle' varchar(80) DEFAULT NULL,
+  'annee_academique_id' int(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `periodes`
+-- Déchargement des données de la table 'periodes'
 --
 
-INSERT INTO `periodes` (`id`, `type`, `libelle`, `annee_academique_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'periodes' ('id', 'type', 'libelle', 'annee_academique_id', 'created_at', 'updated_at') VALUES
 (1, 'Trimestre', '1er Trimestre', 1, '2024-08-27 22:12:49', '2024-08-27 22:12:49'),
 (2, 'Trimestre', '2e Trimestre', 1, '2024-08-27 22:12:49', '2024-08-27 22:12:49'),
 (3, 'Trimestre', '3e Trimestre', 1, '2024-08-27 22:12:49', '2024-08-27 22:12:49'),
@@ -544,27 +544,27 @@ INSERT INTO `periodes` (`id`, `type`, `libelle`, `annee_academique_id`, `created
 -- --------------------------------------------------------
 
 --
--- Structure de la table `personal_access_tokens`
+-- Structure de la table 'personal_access_tokens'
 --
 
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+CREATE TABLE 'personal_access_tokens' (
+  'id' bigint(20) UNSIGNED NOT NULL,
+  'tokenable_type' varchar(255) NOT NULL,
+  'tokenable_id' bigint(20) UNSIGNED NOT NULL,
+  'name' varchar(255) NOT NULL,
+  'token' varchar(64) NOT NULL,
+  'abilities' text DEFAULT NULL,
+  'last_used_at' timestamp NULL DEFAULT NULL,
+  'expires_at' timestamp NULL DEFAULT NULL,
+  'created_at' timestamp NULL DEFAULT NULL,
+  'updated_at' timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `personal_access_tokens`
+-- Déchargement des données de la table 'personal_access_tokens'
 --
 
-INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'personal_access_tokens' ('id', 'tokenable_type', 'tokenable_id', 'name', 'token', 'abilities', 'last_used_at', 'expires_at', 'created_at', 'updated_at') VALUES
 (1, 'App\\Models\\User', 34, 'token', '6eadaecc9053a08159d43e0e9f76bfec6b115d71f6a9f6b41907d6ff8d559f2e', '[\"*\"]', NULL, NULL, '2024-03-24 14:30:05', '2024-03-24 14:30:05'),
 (2, 'App\\Models\\User', 34, 'token', '7df5bf4b19861065c8b088bdd2d9bfe1cab69fd3f45301bcabaac702dc2d99d8', '[\"*\"]', NULL, NULL, '2024-03-24 14:30:34', '2024-03-24 14:30:34'),
 (3, 'App\\Models\\User', 34, 'token', '16b9a8f1562ad738f6102c00723d537ca2dd41da4a2c769673bfae0658797541', '[\"*\"]', NULL, NULL, '2024-03-24 14:31:43', '2024-03-24 14:31:43'),
@@ -662,22 +662,22 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 -- --------------------------------------------------------
 
 --
--- Structure de la table `roles`
+-- Structure de la table 'roles'
 --
 
-CREATE TABLE `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `libelle` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+CREATE TABLE 'roles' (
+  'id' bigint(20) UNSIGNED NOT NULL,
+  'libelle' varchar(255) DEFAULT NULL,
+  'description' varchar(255) DEFAULT NULL,
+  'created_at' timestamp NULL DEFAULT NULL,
+  'updated_at' timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `roles`
+-- Déchargement des données de la table 'roles'
 --
 
-INSERT INTO `roles` (`id`, `libelle`, `description`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'roles' ('id', 'libelle', 'description', 'created_at', 'updated_at') VALUES
 (1, 'Admin', 'Administrateur de l\'équipe des développeurs', '2023-11-09 12:25:01', '2023-11-09 12:25:01'),
 (2, 'Dirigeant', NULL, '2023-11-09 12:25:01', '2023-11-09 12:25:01'),
 (3, 'Enseignant', NULL, '2023-11-09 12:25:01', '2023-11-09 12:25:01'),
@@ -689,22 +689,22 @@ INSERT INTO `roles` (`id`, `libelle`, `description`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `series`
+-- Structure de la table 'series'
 --
 
-CREATE TABLE `series` (
-  `id` int(20) NOT NULL,
-  `libelle` varchar(255) DEFAULT NULL,
-  `niveau_id` int(20) DEFAULT NULL,
-  `created_at` varchar(255) DEFAULT NULL,
-  `updated_at` varchar(255) DEFAULT NULL
+CREATE TABLE 'series' (
+  'id' int(20) NOT NULL,
+  'libelle' varchar(255) DEFAULT NULL,
+  'niveau_id' int(20) DEFAULT NULL,
+  'created_at' varchar(255) DEFAULT NULL,
+  'updated_at' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `series`
+-- Déchargement des données de la table 'series'
 --
 
-INSERT INTO `series` (`id`, `libelle`, `niveau_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'series' ('id', 'libelle', 'niveau_id', 'created_at', 'updated_at') VALUES
 (1, 'A', 19, '2024-09-15 10:56:57', '2024-09-15 10:56:57'),
 (2, 'C', 19, '2024-09-15 11:12:08', '2024-09-15 11:12:08'),
 (3, 'A1', 20, '2024-09-15 11:20:39', '2024-09-15 11:20:39');
@@ -712,56 +712,56 @@ INSERT INTO `series` (`id`, `libelle`, `niveau_id`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sessions`
+-- Structure de la table 'sessions'
 --
 
-CREATE TABLE `sessions` (
-  `id` varchar(255) NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) DEFAULT NULL,
-  `user_agent` text DEFAULT NULL,
-  `payload` longtext NOT NULL,
-  `last_activity` int(11) NOT NULL
+CREATE TABLE 'sessions' (
+  'id' varchar(255) NOT NULL,
+  'user_id' bigint(20) UNSIGNED DEFAULT NULL,
+  'ip_address' varchar(45) DEFAULT NULL,
+  'user_agent' text DEFAULT NULL,
+  'payload' longtext NOT NULL,
+  'last_activity' int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `sessions`
+-- Déchargement des données de la table 'sessions'
 --
 
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+INSERT INTO 'sessions' ('id', 'user_id', 'ip_address', 'user_agent', 'payload', 'last_activity') VALUES
 ('6FMxlUu1COD4hjecImTJ3VITj7Ts4QS8U0SBDvIZ', 1, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibVZoRVhhU0JJZHl3WVhUNm9uOFNZNG52QVJOWk9CdXdRQm56WEZHQSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRZUTVmb2ttdEVnY2NOVTFsMGNiV29PekxETGRFMjZRMmtkM0pXZC50M282bVB2OXZLdlZyYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1702400996);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table 'users'
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenoms` varchar(255) DEFAULT NULL,
-  `sexe` varchar(10) DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `profile_photo_path` varchar(2048) DEFAULT NULL,
-  `login` varchar(255) DEFAULT NULL,
-  `passwords` varchar(255) NOT NULL,
-  `role_id` bigint(20) UNSIGNED NOT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `discip_princ` bigint(20) UNSIGNED DEFAULT NULL,
-  `discip_second` bigint(20) UNSIGNED DEFAULT NULL,
-  `discipline_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `remember_token` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+CREATE TABLE 'users' (
+  'id' bigint(20) UNSIGNED NOT NULL,
+  'nom' varchar(255) DEFAULT NULL,
+  'prenoms' varchar(255) DEFAULT NULL,
+  'sexe' varchar(10) DEFAULT NULL,
+  'telephone' varchar(255) DEFAULT NULL,
+  'email' varchar(255) NOT NULL,
+  'profile_photo_path' varchar(2048) DEFAULT NULL,
+  'login' varchar(255) DEFAULT NULL,
+  'passwords' varchar(255) NOT NULL,
+  'role_id' bigint(20) UNSIGNED NOT NULL,
+  'created_by' int(11) DEFAULT NULL,
+  'discip_princ' bigint(20) UNSIGNED DEFAULT NULL,
+  'discip_second' bigint(20) UNSIGNED DEFAULT NULL,
+  'discipline_id' longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  'remember_token' varchar(255) DEFAULT NULL,
+  'created_at' timestamp NULL DEFAULT NULL,
+  'updated_at' timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Déchargement des données de la table `users`
+-- Déchargement des données de la table 'users'
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenoms`, `sexe`, `telephone`, `email`, `profile_photo_path`, `login`, `passwords`, `role_id`, `created_by`, `discip_princ`, `discip_second`, `discipline_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'users' ('id', 'nom', 'prenoms', 'sexe', 'telephone', 'email', 'profile_photo_path', 'login', 'passwords', 'role_id', 'created_by', 'discip_princ', 'discip_second', 'discipline_id', 'remember_token', 'created_at', 'updated_at') VALUES
 (1, 'ALLIALI', 'Nogues', NULL, '0506439352', 'alliali.dev@gmail.com', '_20180112_232437.JPG', 'alliali01', '$2y$12$wa5h.lQqJ0PFYONCApo.5O2vwDNAkYjhbySSG2atHAOlt.QlxTabu', 1, NULL, 0, NULL, NULL, NULL, '2023-11-09 12:25:01', '2024-03-24 12:39:49'),
 (6, 'YAO', 'Koffi Serge', NULL, '0745899828', 'koffi@gmail.com', 'IMG_20100101_023120_933_1262313421897.jpg', 'yao02', '$2y$12$sHBe1kln7A3G9U1ZntrSzOytDgzEZqZtZY0NQX.ATbrJWDDC2wgGC', 4, NULL, 8, 9, NULL, NULL, '2024-01-22 00:00:00', '2024-06-03 15:42:34'),
 (7, 'ZADI', 'Soro', NULL, '0743453423', 'zadi@gmail.com', 'WhatsApp Image 2024-01-08 at 08.43.50_485fcf43.jpg', 'arobase12', 'XbLtOWVZBJW1/feLNKs', 5, NULL, NULL, NULL, NULL, NULL, '2024-01-22 00:00:00', '2024-03-02 00:00:00'),
@@ -781,310 +781,310 @@ INSERT INTO `users` (`id`, `nom`, `prenoms`, `sexe`, `telephone`, `email`, `prof
 --
 
 --
--- Index pour la table `annee_academiques`
+-- Index pour la table 'annee_academiques'
 --
-ALTER TABLE `annee_academiques`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'annee_academiques'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `belletins`
+-- Index pour la table 'belletins'
 --
-ALTER TABLE `belletins`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'belletins'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `classes`
+-- Index pour la table 'classes'
 --
-ALTER TABLE `classes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `classe_id` (`niveau_id`);
+ALTER TABLE 'classes'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'classe_id' ('niveau_id');
 
 --
--- Index pour la table `cycles`
+-- Index pour la table 'cycles'
 --
-ALTER TABLE `cycles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `annee_academique_id` (`annee_academique_id`,`etablissement_id`),
-  ADD KEY `etablissement_id` (`etablissement_id`);
+ALTER TABLE 'cycles'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'annee_academique_id' ('annee_academique_id','etablissement_id'),
+  ADD KEY 'etablissement_id' ('etablissement_id');
 
 --
--- Index pour la table `details`
+-- Index pour la table 'details'
 --
-ALTER TABLE `details`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'details'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `disciplines`
+-- Index pour la table 'disciplines'
 --
-ALTER TABLE `disciplines`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'disciplines'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `eleves`
+-- Index pour la table 'eleves'
 --
-ALTER TABLE `eleves`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `classe_id` (`classe_id`);
+ALTER TABLE 'eleves'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'classe_id' ('classe_id');
 
 --
--- Index pour la table `etablissements`
+-- Index pour la table 'etablissements'
 --
-ALTER TABLE `etablissements`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'etablissements'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `evaluations`
+-- Index pour la table 'evaluations'
 --
-ALTER TABLE `evaluations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'evaluations'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `failed_jobs`
+-- Index pour la table 'failed_jobs'
 --
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+ALTER TABLE 'failed_jobs'
+  ADD PRIMARY KEY ('id'),
+  ADD UNIQUE KEY 'failed_jobs_uuid_unique' ('uuid');
 
 --
--- Index pour la table `intervenir`
+-- Index pour la table 'intervenir'
 --
-ALTER TABLE `intervenir`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`,`classe_id`);
+ALTER TABLE 'intervenir'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'user_id' ('user_id','classe_id');
 
 --
--- Index pour la table `migrations`
+-- Index pour la table 'migrations'
 --
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'migrations'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `moyennes`
+-- Index pour la table 'moyennes'
 --
-ALTER TABLE `moyennes`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'moyennes'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `niveaus`
+-- Index pour la table 'niveaus'
 --
-ALTER TABLE `niveaus`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cycle_id` (`cycle_id`);
+ALTER TABLE 'niveaus'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'cycle_id' ('cycle_id');
 
 --
--- Index pour la table `notes`
+-- Index pour la table 'notes'
 --
-ALTER TABLE `notes`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'notes'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `notes_old`
+-- Index pour la table 'notes_old'
 --
-ALTER TABLE `notes_old`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `eleve_id` (`eleve_id`,`discipline_id`,`user_id`);
+ALTER TABLE 'notes_old'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'eleve_id' ('eleve_id','discipline_id','user_id');
 
 --
--- Index pour la table `parcours`
+-- Index pour la table 'parcours'
 --
-ALTER TABLE `parcours`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'parcours'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `password_reset_tokens`
+-- Index pour la table 'password_reset_tokens'
 --
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
+ALTER TABLE 'password_reset_tokens'
+  ADD PRIMARY KEY ('email');
 
 --
--- Index pour la table `periodes`
+-- Index pour la table 'periodes'
 --
-ALTER TABLE `periodes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `annee_academique_id` (`annee_academique_id`);
+ALTER TABLE 'periodes'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'annee_academique_id' ('annee_academique_id');
 
 --
--- Index pour la table `personal_access_tokens`
+-- Index pour la table 'personal_access_tokens'
 --
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+ALTER TABLE 'personal_access_tokens'
+  ADD PRIMARY KEY ('id'),
+  ADD UNIQUE KEY 'personal_access_tokens_token_unique' ('token'),
+  ADD KEY 'personal_access_tokens_tokenable_type_tokenable_id_index' ('tokenable_type','tokenable_id');
 
 --
--- Index pour la table `roles`
+-- Index pour la table 'roles'
 --
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'roles'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `series`
+-- Index pour la table 'series'
 --
-ALTER TABLE `series`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE 'series'
+  ADD PRIMARY KEY ('id');
 
 --
--- Index pour la table `sessions`
+-- Index pour la table 'sessions'
 --
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sessions_user_id_index` (`user_id`),
-  ADD KEY `sessions_last_activity_index` (`last_activity`);
+ALTER TABLE 'sessions'
+  ADD PRIMARY KEY ('id'),
+  ADD KEY 'sessions_user_id_index' ('user_id'),
+  ADD KEY 'sessions_last_activity_index' ('last_activity');
 
 --
--- Index pour la table `users`
+-- Index pour la table 'users'
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `role_id` (`role_id`);
+ALTER TABLE 'users'
+  ADD PRIMARY KEY ('id'),
+  ADD UNIQUE KEY 'email' ('email'),
+  ADD KEY 'role_id' ('role_id');
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `annee_academiques`
+-- AUTO_INCREMENT pour la table 'annee_academiques'
 --
-ALTER TABLE `annee_academiques`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE 'annee_academiques'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `belletins`
+-- AUTO_INCREMENT pour la table 'belletins'
 --
-ALTER TABLE `belletins`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+ALTER TABLE 'belletins'
+  MODIFY 'id' int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `classes`
+-- AUTO_INCREMENT pour la table 'classes'
 --
-ALTER TABLE `classes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE 'classes'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `cycles`
+-- AUTO_INCREMENT pour la table 'cycles'
 --
-ALTER TABLE `cycles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE 'cycles'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pour la table `details`
+-- AUTO_INCREMENT pour la table 'details'
 --
-ALTER TABLE `details`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE 'details'
+  MODIFY 'id' int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `disciplines`
+-- AUTO_INCREMENT pour la table 'disciplines'
 --
-ALTER TABLE `disciplines`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE 'disciplines'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT pour la table `eleves`
+-- AUTO_INCREMENT pour la table 'eleves'
 --
-ALTER TABLE `eleves`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE 'eleves'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pour la table `etablissements`
+-- AUTO_INCREMENT pour la table 'etablissements'
 --
-ALTER TABLE `etablissements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE 'etablissements'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `evaluations`
+-- AUTO_INCREMENT pour la table 'evaluations'
 --
-ALTER TABLE `evaluations`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE 'evaluations'
+  MODIFY 'id' int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `failed_jobs`
+-- AUTO_INCREMENT pour la table 'failed_jobs'
 --
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE 'failed_jobs'
+  MODIFY 'id' bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `intervenir`
+-- AUTO_INCREMENT pour la table 'intervenir'
 --
-ALTER TABLE `intervenir`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE 'intervenir'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pour la table `migrations`
+-- AUTO_INCREMENT pour la table 'migrations'
 --
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE 'migrations'
+  MODIFY 'id' int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `moyennes`
+-- AUTO_INCREMENT pour la table 'moyennes'
 --
-ALTER TABLE `moyennes`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+ALTER TABLE 'moyennes'
+  MODIFY 'id' int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `niveaus`
+-- AUTO_INCREMENT pour la table 'niveaus'
 --
-ALTER TABLE `niveaus`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE 'niveaus'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT pour la table `notes`
+-- AUTO_INCREMENT pour la table 'notes'
 --
-ALTER TABLE `notes`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE 'notes'
+  MODIFY 'id' int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `notes_old`
+-- AUTO_INCREMENT pour la table 'notes_old'
 --
-ALTER TABLE `notes_old`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE 'notes_old'
+  MODIFY 'id' bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `parcours`
+-- AUTO_INCREMENT pour la table 'parcours'
 --
-ALTER TABLE `parcours`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+ALTER TABLE 'parcours'
+  MODIFY 'id' int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `periodes`
+-- AUTO_INCREMENT pour la table 'periodes'
 --
-ALTER TABLE `periodes`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE 'periodes'
+  MODIFY 'id' int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT pour la table `personal_access_tokens`
+-- AUTO_INCREMENT pour la table 'personal_access_tokens'
 --
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+ALTER TABLE 'personal_access_tokens'
+  MODIFY 'id' bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT pour la table `series`
+-- AUTO_INCREMENT pour la table 'series'
 --
-ALTER TABLE `series`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE 'series'
+  MODIFY 'id' int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT pour la table 'users'
 --
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+ALTER TABLE 'users'
+  MODIFY 'id' bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `cycles`
+-- Contraintes pour la table 'cycles'
 --
-ALTER TABLE `cycles`
-  ADD CONSTRAINT `cycles_ibfk_1` FOREIGN KEY (`annee_academique_id`) REFERENCES `annee_academiques` (`id`),
-  ADD CONSTRAINT `cycles_ibfk_2` FOREIGN KEY (`etablissement_id`) REFERENCES `etablissements` (`id`);
+ALTER TABLE 'cycles'
+  ADD CONSTRAINT 'cycles_ibfk_1' FOREIGN KEY ('annee_academique_id') REFERENCES 'annee_academiques' ('id'),
+  ADD CONSTRAINT 'cycles_ibfk_2' FOREIGN KEY ('etablissement_id') REFERENCES 'etablissements' ('id');
 
 --
--- Contraintes pour la table `users`
+-- Contraintes pour la table 'users'
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+ALTER TABLE 'users'
+  ADD CONSTRAINT 'users_role_id_foreign' FOREIGN KEY ('role_id') REFERENCES 'roles' ('id');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

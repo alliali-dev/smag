@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('cycles', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
             $table->timestamps();
+        });
+
+        Schema::table("cycles", function (Blueprint $table) {
+            $table->foreignId('annee_academique_id')->index()->nullable()->references('id')->on('annee_academiques');
+        });
+
+        Schema::table("cycles", function (Blueprint $table) {
+            $table->foreignId('etablissement_id')->index()->nullable()->references('id')->on('etablissements');
         });
     }
 

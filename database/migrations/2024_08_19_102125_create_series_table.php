@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stages', function (Blueprint $table) {
+        Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->boolean('status');
+            $table->string('libelle');
             $table->timestamps();
+        });
+
+        Schema::table("series", function (Blueprint $table) {
+            $table->foreignId('niveau_id')->nullable()->references('id')->on('niveaux');
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stages');
+        Schema::dropIfExists('series');
     }
 };

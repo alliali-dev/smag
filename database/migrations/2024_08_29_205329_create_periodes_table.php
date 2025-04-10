@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('periodes', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable();
             $table->string('libelle')->nullable();
-            $table->string('description')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('periodes', function (Blueprint $table) {
+            $table->foreignId('annee_academique_id')->nullable()->references('id')->on('annee_academiques');
         });
     }
 
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('periodes');
     }
 };

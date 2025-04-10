@@ -15,6 +15,18 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
         });
+
+        Schema::table('parcours', function (Blueprint $table) {
+            $table->foreignId('eleve_id')->nullable()->index()->references('id')->on('eleves');
+        });
+
+        Schema::table('parcours', function (Blueprint $table) {
+            $table->foreignId('classe_id')->nullable()->index()->references('id')->on('classes');
+        });
+
+        Schema::table('parcours', function (Blueprint $table) {
+            $table->foreignId('annee_academique_id')->nullable()->index()->references('id')->on('annee_academiques');
+        });
     }
 
     /**

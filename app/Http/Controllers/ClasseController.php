@@ -20,14 +20,14 @@ class ClasseController extends Controller
 
         switch ($user->role_id) {
             case 1:
-                $classes = Classe::join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
-                    ->join("series", "series.niveau_id", "niveaus.id")
+                $classes = Classe::join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
+                    ->join("series", "series.niveau_id", "niveaux.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
                         "classes.id",
-                        "niveaus.libelle as niveau",
+                        "niveaux.libelle as niveau",
                         // "series.libelle as serie",
                         "classes.libelle as classe",
                         "classes.created_at as classesCreated",
@@ -44,14 +44,14 @@ class ClasseController extends Controller
                     ->paginate(12);
                 break;
             case 2:
-                $classes = Classe::join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
-                    ->join("series", "series.niveau_id", "niveaus.id")
+                $classes = Classe::join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
+                    ->join("series", "series.niveau_id", "niveaux.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
                         "classes.id",
-                        "niveaus.libelle as niveau",
+                        "niveaux.libelle as niveau",
                         // "series.libelle as serie",
                         "classes.libelle as classe",
                         "classes.created_at as classesCreated",
@@ -69,7 +69,7 @@ class ClasseController extends Controller
 
                 break;
             case 3:
-                // $niveaus = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
+                // $niveaux = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
                 break;
         }
         // dd($classes);
@@ -85,18 +85,18 @@ class ClasseController extends Controller
         switch ($userId) {
             case '1':
                 # Admin
-                $niveaus = Niveau::join("cycles", "niveaus.cycle_id", "cycles.id")
+                $niveaux = Niveau::join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
-                    ->select("niveaus.id", 'niveaus.libelle', 'etablissements.nom as etablissement')
+                    ->select("niveaux.id", 'niveaux.libelle', 'etablissements.nom as etablissement')
                     // ->with("etablissement")
                     ->with("cycle")
                     ->get();
                 break;
 
             default:
-                $niveaus = Niveau::join("cycles", "niveaus.cycle_id", "cycles.id")
+                $niveaux = Niveau::join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
-                    ->select("niveaus.id", 'niveaus.libelle', 'etablissements.nom as etablissement')
+                    ->select("niveaux.id", 'niveaux.libelle', 'etablissements.nom as etablissement')
                     ->where('etablissements.created_by', '=', $userId)
                     ->get();
 
@@ -108,8 +108,8 @@ class ClasseController extends Controller
         //     $is =  printf('<option value="' . $i . '">' . $i . '</option>');
         // }
         // dd($is);
-        // dd($niveaus);
-        return view("classes.create", compact("niveaus"));
+        // dd($niveaux);
+        return view("classes.create", compact("niveaux"));
     }
 
     /**

@@ -36,7 +36,7 @@
                                     <select placeholder="Choisissez le niveau" id="niveau" name="niveau"
                                         class="form-control @error('niveau') is-invalid @enderror" required
                                         value="{{old('niveau')}}" autofocus style="text-transform:uppercase">
-                                        @forelse($niveaus as $item)
+                                        @forelse($niveaux as $item)
                                         <option value="{{$item->id}}">
                                             {{$item->libelle}}&nbsp;&VerticalBar;&nbsp;
                                             {{$item->etablissement}}

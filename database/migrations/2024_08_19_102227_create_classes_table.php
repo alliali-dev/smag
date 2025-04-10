@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle')->nullable();
+            $table->integer('effectif_c')->nullable();
+            $table->foreignId('niveau_id')->nullable()->references('id')->on('niveaux');
             $table->timestamps();
         });
     }

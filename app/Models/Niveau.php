@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Niveau extends Model
 {
     use HasFactory;
-    protected $table = "niveaus";
+    protected $table = "niveaux";
     protected $fillable = ['libelle', 'cycle_id', 'created_at', 'updated_at'];
 
     /**

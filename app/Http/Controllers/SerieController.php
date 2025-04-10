@@ -21,14 +21,14 @@ class SerieController extends Controller
 
         switch ($user->role_id) {
             case 1:
-                $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
                         "series.id",
                         "series.libelle as serie",
-                        "niveaus.libelle as niveau",
+                        "niveaux.libelle as niveau",
                         "series.updated_at as seriesCreated",
                         "series.created_at as seriesUpdated",
                         "etablissements.created_by",
@@ -39,14 +39,14 @@ class SerieController extends Controller
                     ->paginate(12);
                 break;
             case 2:
-                $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
                         "series.id",
                         "series.libelle as serie",
-                        "niveaus.libelle as niveau",
+                        "niveaux.libelle as niveau",
                         "series.updated_at as seriesCreated",
                         "series.created_at as seriesUpdated",
                         "annee_academiques.libelle as annee",
@@ -59,7 +59,7 @@ class SerieController extends Controller
 
                 break;
             case 3:
-                // $niveaus = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
+                // $niveaux = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
                 break;
         }
         // dd($series);
@@ -73,16 +73,16 @@ class SerieController extends Controller
     public function getNiveauByYear($yearI)
     {
 
-        $niveaus = Niveau::join("cycles", "niveaus.cycle_id", "cycles.id")
+        $niveaux = Niveau::join("cycles", "niveaux.cycle_id", "cycles.id")
             ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
             ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
-            ->select("niveaus.id as codeNi", 'niveaus.libelle as niv')
+            ->select("niveaux.id as codeNi", 'niveaux.libelle as niv')
             ->where("annee_academiques.id", "=", $yearI)
             ->where('etablissements.created_by', '=', auth()->user()->id)
             ->whereIn("cycles.libelle", array("2e Cycle"))
             // ->dd();
             ->get();
-        return response()->json($niveaus);
+        return response()->json($niveaux);
     }
     /**
      * Show the form for creating a new resource.

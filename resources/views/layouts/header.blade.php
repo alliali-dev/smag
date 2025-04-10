@@ -112,7 +112,7 @@
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                             @if (auth()->user()->profile_photo_path=="")
                             @switch(auth()->user()->sexe)
-                            @case("H")
+                            @case("M")
                             <img src="{{asset('assets/images/avatar/male.jpg')}}" width="20" alt="photo">
                             @break
                             @case("F")
@@ -127,7 +127,10 @@
                             @endphp
                             <img src="{{ asset('assets/images/avatar/'.$avatar) }}" width="20" alt="profile">
                             @endif
-                        </a>
+                        </a><br>
+                        <p style="color: green; text-transform:uppercase;">
+                            <b>{{userRole()}}</b>
+                        </p>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{route('profile.edit',auth()->user()->id)}}" class="dropdown-item ai-icon">
                                 <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -147,7 +150,6 @@
                                 <span class="ms-2">Inbox </span>
                             </a> -->
                             <a href="/logout" class="dropdown-item ai-icon">
-
                                 <form action="/logout" method="post">
                                     @csrf
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -157,8 +159,9 @@
                                         <polyline points="16 17 21 12 16 7"></polyline>
                                         <line x1="21" y1="12" x2="9" y2="12"></line>
                                     </svg>
-                                    <button type="submit" class="btn btn-danger"><span class="ms-2">Se
-                                            d&eacute;connecter
+                                    <button type="submit" class="btn btn-danger">
+                                        <span class="ms-2">
+                                            Se d&eacute;connecter
                                         </span></button>
                                 </form>
                             </a>

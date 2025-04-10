@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
+            $table->float('note');
+            $table->foreignId('evaluation_id')->references('id')->on('evaluations')->nullable();
+            $table->foreignId('eleve_id')->references('id')->on('eleves')->nullable();
             $table->timestamps();
         });
     }

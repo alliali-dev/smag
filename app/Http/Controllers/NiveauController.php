@@ -17,22 +17,22 @@ class NiveauController extends Controller
     public function index()
     {
         //
-        $niveaus = Niveau::select("id")->paginate(10);
+        $niveaux = Niveau::select("id")->paginate(10);
 
         $user = auth()->user();
         // dd($user);
 
         switch ($user->role_id) {
             case 1:
-                $niveaus = Niveau::join("cycles", "niveaus.cycle_id", "cycles.id")
+                $niveaux = Niveau::join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
-                        "niveaus.id",
+                        "niveaux.id",
                         "cycles.id as idCycle",
-                        "niveaus.libelle as niveau",
-                        "niveaus.updated_at as niveauCreated",
-                        "niveaus.created_at as niveauUpdated",
+                        "niveaux.libelle as niveau",
+                        "niveaux.updated_at as niveauCreated",
+                        "niveaux.created_at as niveauUpdated",
                         "etablissements.id as idEta",
                         "etablissements.nom as Etab",
                         "annee_academiques.libelle as annee",
@@ -46,15 +46,15 @@ class NiveauController extends Controller
                     ->paginate(12);
                 break;
             case 2:
-                $niveaus = Niveau::join("cycles", "niveaus.cycle_id", "cycles.id")
+                $niveaux = Niveau::join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "Cycles.annee_academique_id", "annee_academiques.id")
                     ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
                     ->select(
-                        "niveaus.id",
+                        "niveaux.id",
                         "cycles.id as idCycle",
-                        "niveaus.libelle as niveau",
-                        "niveaus.updated_at as niveauCreated",
-                        "niveaus.created_at as niveauUpdated",
+                        "niveaux.libelle as niveau",
+                        "niveaux.updated_at as niveauCreated",
+                        "niveaux.created_at as niveauUpdated",
                         "etablissements.id as idEta",
                         "etablissements.nom as Etab",
                         "annee_academiques.libelle as annee",
@@ -70,11 +70,11 @@ class NiveauController extends Controller
 
                 break;
             case 3:
-                // $niveaus = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
+                // $niveaux = Niveau::select('*')->where('created_by', '=', $user)->paginate(12);
                 break;
         }
-        // dd($niveaus);
-        return view('niveaus.index', compact('niveaus'));
+        // dd($niveaux);
+        return view('niveaux.index', compact('niveaux'));
     }
 
     /**
@@ -106,7 +106,7 @@ class NiveauController extends Controller
         //     // ->dd();
         //     ->get();
         $annees = Annee::select('id', 'libelle')->orderBy('id', 'desc')->get();
-        return view('niveaus.create', compact('annees'));
+        return view('niveaux.create', compact('annees'));
     }
 
     /**
@@ -128,7 +128,7 @@ class NiveauController extends Controller
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
         ]);
-        return $new ? redirect()->route('niveaus.index')->with("success", "Niveau enregistré avec succès!") : redirect()->back()->with("danger", "Niveau non enregistré!")->withInput();
+        return $new ? redirect()->route('niveaux.index')->with("success", "Niveau enregistré avec succès!") : redirect()->back()->with("danger", "Niveau non enregistré!")->withInput();
     }
 
     /**

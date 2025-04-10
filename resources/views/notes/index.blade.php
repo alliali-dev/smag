@@ -22,8 +22,8 @@
             @csrf
             <div class="row">
                 <div class="col-3">
-                    <label for="paramPeriode">Periode</label>
-                    <select name="paramPeriode" id="paramPeriode" class="form-select">
+                    <label for="pp">Periode</label>
+                    <select name="pp" id="pp" class="form-select">
                         @forelse ($periodes as $item)
                         <option value="{{$item->id}}">{{$item->libelle}}</option>
                         @empty
@@ -32,8 +32,8 @@
                     </select>
                 </div>
                 <div class="col-3">
-                    <label for="paramClasse">Classe</label>
-                    <select name="paramClasse" id="paramClasse" class="form-select">
+                    <label for="pc">Classe</label>
+                    <select name="pc" id="pc" class="form-select">
                         @forelse ($classes as $item)
                         <option value="{{$item->idclas}}">{{$item->classe}}</option>
                         @empty
@@ -43,8 +43,8 @@
                 </div>
                 <div class="col-4">
                     @if (!empty($disciplines))
-                    <label for="paramDiscipline">Discipline</label>
-                    <select name="paramDiscipline" id="paramDiscipline" class="form-select">
+                    <label for="pd">Discipline</label>
+                    <select name="pd" id="pd" class="form-select">
                         @forelse($disciplines as $key=>$item)
                         <option value="{{$item->codeMat}}">{{$item->matiere}}</option>
                         @empty
@@ -52,7 +52,7 @@
                         @endforelse
                     </select>
 
-                    @error('paramDiscipline') <span class="text text-danger">{{$message}}</span>@enderror
+                    @error('pd') <span class="text text-danger">{{$message}}</span>@enderror
                     @else
                     <!-- "Aucune discipline disponible!" -->
                     @endif
@@ -115,9 +115,9 @@
                                             <th>&nbsp;</th>
                                         </tr>
                                         <tr>
-                                            <th>Periode</th>
-                                            <th>Classe</th>
-                                            <th>El&egrave;ves</th>
+                                            {{-- <th>Periode</th>
+                                            <th>Classe</th> --}}
+                                            <th>Nom & Pr&eacute;noms</th>
                                             <th>Disciplines</th>
                                             <th>Type de note</th>
                                             <th colspan="2">Notes</th>
@@ -138,8 +138,8 @@
                                 </table>
                                 <hr>
                                 <div class="row" style="float:right;">
-                                    <nav class="nav text-right">
-                                        {{-- {{$eleves->links('pagination::bootstrap-5')}} --}}
+                                    <nav class="nav text-right" id="paginateNav">
+
                                     </nav>
                                 </div>
                             </div>

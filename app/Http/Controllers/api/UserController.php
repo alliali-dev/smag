@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
-
-
 class UserController extends Controller
 {
     //
@@ -95,7 +93,7 @@ class UserController extends Controller
             "telephone" => $request->telephone,
             "email" => $request->email,
             "login" => $request->login,
-            "passwords" => Hash::make($request->passwords),
+            "password" => Hash::make($request->passwords),
             "profile_photo_path" => $request->profile_photo_path,
             "role_id" => $request->role_id,
             "sexe" => $request->sexe,
@@ -154,7 +152,7 @@ class UserController extends Controller
             "telephone" => $request->telephone,
             "email" => $request->email,
             "login" => $request->login,
-            "passwords" => Hash::make($request->passwords),
+            "password" => Hash::make($request->passwords),
             "profile_photo_path" => $request->profile_photo_path,
             "role_id" => $request->role_id,
             "discip_princ" => $request->discip_princ,

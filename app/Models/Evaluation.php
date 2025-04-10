@@ -26,7 +26,7 @@ class Evaluation extends Model
      * Get perode for Evaluation
      * @return periode
      */
-    public function periodeForEvaluation()
+    public  function periodeForEvaluation()
     {
         return $this->belongsTo(Periode::class, "periode_id", "id");
     }

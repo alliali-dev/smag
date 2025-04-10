@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('interventions', function (Blueprint $table) {
+        Schema::create('annee_academiques', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle')->nullable();
+            $table->datetime('debut_annee');
+            $table->datetime('fin_annee');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('interventions');
+        Schema::dropIfExists('annee_academiques');
     }
 };

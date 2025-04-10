@@ -10,21 +10,17 @@ class Eleve extends Model
     use HasFactory;
     protected $table = "eleves";
     protected $fillable = [
-        'nom',
-        'prenoms',
-        'date_nais',
-        'lieu_nais',
-        'sexe',
-        'nationalite',
         'matricule',
         'redoublant',
         'regime',
-        'affecte',
-        'photo',
+        'affected',
         'classe_id',
         'created_by',
+        'parent',
+        'user_id',
         'created_at',
         'updated_at',
+        // matricule 	redoublant 	regime 	affected 	classe_id 	created_by 	parent 	user_id 	
     ];
     /**
      * Get classe for Eleve
@@ -57,5 +53,10 @@ class Eleve extends Model
                 // "periodes.libelle as moment",
                 // "disciplines.libelle as matiere",
             );
+    }
+
+    public function getStudentInfo()
+    {
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 }

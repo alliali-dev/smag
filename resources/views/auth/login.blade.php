@@ -22,14 +22,14 @@
                         </div>
                         <h4 class="text-center mb-4"><span class="fa fa-lock"></span>&nbsp;CONNECTEZ VOUS A VOTRE COMPTE
                         </h4>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login.store') }}">
                             @csrf
 
                             <div class="form-group">
-                                <label class="form-label" for="username">E-mail</label>
+                                <label class="form-label" for="email">E-mail</label>
                                 <input type="email" name="email"
                                     class="form-control @error('email') is-invalid @enderror" placeholder="abdc@ghi.xyz"
-                                    id="username" autofocus>
+                                    id="email" autofocus>
                                 @error('email') <span class="text text-danger">{{$message}}</span> @enderror
                             </div>
                             <div class="mb-4 position-relative">

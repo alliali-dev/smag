@@ -13,7 +13,23 @@ return new class extends Migration
     {
         Schema::create('moyennes', function (Blueprint $table) {
             $table->id();
+            $table->float('moy');
+            $table->float('moy_coef');
+            $table->string('rang');
+            $table->string('appreciation');
             $table->timestamps();
+        });
+
+        Schema::table('moyennes', function (Blueprint $table) {
+            $table->foreignId('eleve_id')->nullable()->index()->references('id')->on('eleves');
+        });
+
+        Schema::table('moyennes', function (Blueprint $table) {
+            $table->foreignId('periode_id')->nullable()->index()->references('id')->on('periodes');
+        });
+
+        Schema::table('moyennes', function (Blueprint $table) {
+            $table->foreignId('discipline_id')->nullable()->index()->references('id')->on('disciplines');
         });
     }
 

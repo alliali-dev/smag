@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Models\User;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class EleveController extends Controller
@@ -22,8 +24,8 @@ class EleveController extends Controller
         switch (auth()->user()->role_id) {
             case 1:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     // ->where("annee_academiques.libelle","=","2024-2025")
                     ->select(
@@ -54,8 +56,8 @@ class EleveController extends Controller
                 break;
             case 2:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     // ->where("annee_academiques.libelle","=","2024-2025")
@@ -86,8 +88,8 @@ class EleveController extends Controller
                 break;
             case 3:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     ->select(
@@ -130,8 +132,8 @@ class EleveController extends Controller
         switch (auth()->user()->role_id) {
             case 1:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where("annee_academiques.libelle", "=", $year)
                     ->select(
@@ -162,8 +164,8 @@ class EleveController extends Controller
                 break;
             case 2:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     ->where("annee_academiques.libelle", "=", $year)
@@ -194,8 +196,8 @@ class EleveController extends Controller
                 break;
             case 3:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     ->select(
@@ -241,8 +243,8 @@ class EleveController extends Controller
         switch (auth()->user()->role_id) {
             case 1:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where("eleves.matricule", "=", $matricule)
                     ->select(
@@ -273,8 +275,8 @@ class EleveController extends Controller
                 break;
             case 2:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     ->where("eleves.matricule", "=", $matricule)
@@ -305,8 +307,8 @@ class EleveController extends Controller
                 break;
             case 3:
                 $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-                    ->join("niveaus", "classes.niveau_id", "niveaus.id")
-                    ->join("cycles", "niveaus.cycle_id", "cycles.id")
+                    ->join("niveaux", "classes.niveau_id", "niveaux.id")
+                    ->join("cycles", "niveaux.cycle_id", "cycles.id")
                     ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
                     ->where('created_by', '=', auth()->user()->id)
                     ->select(
@@ -344,8 +346,8 @@ class EleveController extends Controller
      */
     public function create()
     {
-        $classe = Classe::join("niveaus", "classes.niveau_id", "niveaus.id")
-            ->join("cycles", "niveaus.cycle_id", "cycles.id")
+        $classe = Classe::join("niveaux", "classes.niveau_id", "niveaux.id")
+            ->join("cycles", "niveaux.cycle_id", "cycles.id")
             ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
             ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
             ->select("classes.id", 'classes.libelle')
@@ -360,8 +362,8 @@ class EleveController extends Controller
     public function store(StoreEleveRequest $request)
     {
         $check = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
-            ->join("cycles", "niveaus.cycle_id", "cycles.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
+            ->join("cycles", "niveaux.cycle_id", "cycles.id")
             ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
             ->where([
                 ['created_by', '=', auth()->user()->id],
@@ -407,18 +409,27 @@ class EleveController extends Controller
         $path = public_path('assets/images/eleves');
         $photo->move($path, strtolower($photoname));
         // dd($photoname);
-        $new = Eleve::create([
+
+        $user = User::create([
             'nom' => strtoupper($request->nom),
             'prenoms' => ucwords($request->prenoms),
             'date_nais' => $request->datenais,
             'lieu_nais' => ucwords($request->lieunais),
             'sexe' => $request->sexe,
             'nationalite' => ucfirst($request->nationnalite),
+            'profile_photo_path' => strtolower($photoname),
+            "telephone",
+            "email" => $request->prenoms . '-' . $request->nom . '@' . 'gmail.com',
+            "password" => Hash::make($request->nom . $request->datenais),
+            "role_id",
+        ]);
+        $new = Eleve::create([
             'matricule' => $request->matricule,
             'redoublant' => $request->redoublant,
+            'parent' => null,
+            'user_id' => $user->id,
             'regime' => $request->regime,
-            'affecte' => $request->affecte,
-            'photo' => strtolower($photoname),
+            'affected' => $request->affecte,
             'classe_id' => $request->classe,
             'created_by' => auth()->user()->id,
             'created_at' => Carbon::now(),

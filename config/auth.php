@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'password' => 'users',
     ],
 
     /*
@@ -73,43 +73,45 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Resetting Passwords
+    | Resetting Password
     |--------------------------------------------------------------------------
     |
-    | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
-    |
-    | The expiry time is the number of minutes that each reset token will be
-    | considered valid. This security feature keeps tokens short-lived so
-    | they have less time to be guessed. You may change this as needed.
-    |
-    | The throttle setting is the number of seconds a user must wait before
-    | generating more password reset tokens. This prevents the user from
-    | quickly generating a very large amount of password reset tokens.
+    | Vous pouvez spécifier plusieurs configurations de réinitialisation de mot de passe si vous avez 
+    | plusieurs tables ou modèles d'utilisateurs dans l'application et que vous souhaitez disposer de 
+    | paramètres de réinitialisation de mot de passe distincts en fonction des types d'utilisateurs.
+    | Le délai d'expiration correspond au nombre de (minutes) pendant lesquelles chaque jeton de 
+    | réinitialisation est considéré comme valide. Cette fonctionnalité de sécurité limite la durée de vie 
+    | des jetons, les rendant ainsi moins susceptibles d'être devinés. 
+    | Vous pouvez modifier ce paramètre si nécessaire.
+    | Le paramètre de limitation correspond au nombre de (secondes) qu'un utilisateur doit attendre 
+    | avant de générer davantage de jetons de réinitialisation de mot de passe.
+    | Cela empêche l'utilisateur de générer rapidement un nombre important de jetons de réinitialisation
+    | de mot de passe.
     |
     */
 
-    'passwords' => [
+    'password' => [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
-            'throttle' => 60,
+            'throttle' => 10800,
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
+    | Délai d'expiration de la confirmation du mot de passe
     |--------------------------------------------------------------------------
     |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
+    |
+    | Vous pouvez définir ici le délai d'expiration (en secondes) avant l'expiration de la confirmation 
+    | du mot de passe et la demande de l'utilisateur de saisir à nouveau son mot de passe via l'écran de 
+    | confirmation. 
+    | Par défaut, le délai d'expiration est de trois heures.
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 3600,
 
 ];

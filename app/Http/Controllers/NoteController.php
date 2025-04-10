@@ -163,49 +163,125 @@ class NoteController extends Controller
      * 
      * **/
     public function getNotes(
-        int $classe = null,
-        int $discipline = null,
-        int $moment = null
+        int $classe,
+        int $discipline,
+        int $moment
     ) {
         // dd(request()->all());
-        $classe = request("paramClasse");
-        $discipline = request("paramDiscipline");
-        $moment = request("paramPeriode");
+        $moment = request("pp");
+        $classe = request("pc");
+        $discipline = request("pd");
 
-        $evaluation = Evaluation::join("periodes", "evaluations.periode_id", "periodes.id")
+        // $evaluation = Evaluation::join("periodes", "evaluations.periode_id", "periodes.id")
+        //     ->join("disciplines", "evaluations.discipline_id", "disciplines.id")
+        //     ->join("classes", "evaluations.classe_id", "classes.id")
+        //     ->join("notes", "notes.evaluation_id", "evaluations.id")
+        //     ->join("eleves", "notes.eleve_id", "eleves.id")
+        //     ->join("eleves", "eleves.classe_id", "classes.id")
+        //     ->distinct()
+        //     ->where("evaluations.user_id", auth()->user()->id)
+        //     ->where([
+        //         ["evaluations.classe_id", $classe],
+        //         ["evaluations.discipline_id", $discipline],
+        //         ["evaluations.periode_id", $moment]
+        //     ])
+        //     ->orderBy("eleves.nom")
+        //     ->orderBy("eleves.prenoms")
+        //     ->select(
+        //         [
+        //             "evaluations.id as codeEval",
+        //             "evaluations.type as TypeEval",
+        //             "evaluations.coef as CoefEval",
+        //             "evaluations.created_at as dateCreated",
+        //             "notes.id as CodeNote",
+        //             "notes.note as valNote",
+        //             "eleves.id as codeEleve",
+        //             "eleves.nom as firstname",
+        //             "eleves.prenoms as lastname",
+        //             "eleves.matricule as code",
+        //             "classes.libelle as classe",
+        //             "periodes.libelle as moment",
+        //             "disciplines.libelle as matiere",
+        //         ]
+        //     )
+        //     ->cursorPaginate(2);
+        // // ->get();
+        // dd($evaluation);
+        // $eleves = Evaluation::join("disciplines", "evaluations.discipline_id", "disciplines.id")
+        //     ->join("classes", "evaluations.classe_id", "classes.id")
+        //     ->distinct()
+        //     ->where("evaluations.user_id", auth()->user()->id)
+        //     ->where([
+        //         ["evaluations.classe_id", $classe],
+        //         // ["evaluations.discipline_id", $discipline],
+        //         ["evaluations.periode_id", $moment]
+        //     ])
+        //     ->select([
+        //         "evaluations.id as codeEval",
+        //         "evaluations.type as TypeEval",
+        //         "evaluations.coef as CoefEval",
+        //         "evaluations.created_at as dateCreated",
+        //         "disciplines.libelle as matiere",
+        //         "classes.libelle as classe",
+        //     ])
+        //     ->cursorPaginate(2);
+        // $eleves = new Evaluation();
+        $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
+            ->join("evaluations", "evaluations.classe_id", "classes.id")
             ->join("disciplines", "evaluations.discipline_id", "disciplines.id")
-            ->join("classes", "evaluations.classe_id", "classes.id")
-            ->join("notes", "notes.evaluation_id", "evaluations.id")
-            ->join("eleves", "notes.eleve_id", "eleves.id")
-            ->where("evaluations.user_id", auth()->user()->id)
+            ->distinct()
             ->where([
                 ["evaluations.classe_id", $classe],
-                ["evaluations.discipline_id", $discipline],
+                // ["evaluations.discipline_id", $discipline],
+                ["evaluations.periode_id", $moment],
+                ["evaluations.user_id", auth()->user()->id],
+            ])
+            ->select([
+                "eleves.id as codeEleve",
+                "eleves.nom as firstname",
+                "eleves.prenoms as lastname",
+                "eleves.matricule as code",
+                "classes.libelle as classe",
+            ])
+            ->cursorPaginate(10);
+
+        $evaluation = Evaluation::join("periodes", "evaluations.periode_id", "periodes.id")
+            // ->join("disciplines", "evaluations.discipline_id", "disciplines.id")
+            // ->join("classes", "evaluations.classe_id", "classes.id")
+            ->distinct()
+            ->where("evaluations.user_id", auth()->user()->id)
+            ->where([
+                // ["evaluations.classe_id", $classe],
+                // ["evaluations.discipline_id", $discipline],
                 ["evaluations.periode_id", $moment]
             ])
-            ->orderBy("eleves.nom")
-            ->orderBy("eleves.prenoms")
-            // ->dd();
+            // ->orderBy("eleves.nom")
+            // ->orderBy("eleves.prenoms")
             ->select(
                 [
                     "evaluations.id as codeEval",
                     "evaluations.type as TypeEval",
                     "evaluations.coef as CoefEval",
                     "evaluations.created_at as dateCreated",
-                    "notes.id as CodeNote",
-                    "notes.note as valNote",
-                    "eleves.id as codeEleve",
-                    "eleves.nom as firstname",
-                    "eleves.prenoms as lastname",
-                    "eleves.matricule as code",
-                    "classes.libelle as classe",
+                    // "notes.id as CodeNote",
+                    // "notes.note as valNote",
+                    // "eleves.id as codeEleve",
+                    // "eleves.nom as firstname",
+                    // "eleves.prenoms as lastname",
+                    // "eleves.matricule as code",
+                    // "classes.libelle as classe",
                     "periodes.libelle as moment",
-                    "disciplines.libelle as matiere",
+                    // "disciplines.libelle as matiere",
                 ]
             )
-            ->get();
-        // return $evaluation;
-        return response()->json($evaluation);
+            ->cursorPaginate(2);
+
+        return
+            response()->json([
+                "status" => "Data found",
+                "datas" => $eleves,
+                "code" => 200
+            ]);
     }
 
     /**

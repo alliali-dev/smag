@@ -61,27 +61,17 @@ class EvaluationController extends Controller
 
         // dd($idclas);
         $disciplines = Discipline::select("disciplines.id", 'disciplines.libelle')
-            ->join("users", "users.discip_princ", "disciplines.id")
+            ->join("users", "users.discipline_id", "disciplines.id")
             ->where(
                 [
-                    // ["users.discip_princ", "=", "disciplines.id"],
+                    // ["users.discipline_id", "=", "disciplines.id"],
                     ['users.role_id', '=', 3],
                     ['users.id', '=', auth()->user()->id],
                 ]
             )
             // ->dd();
             ->get();
-        $disciplines_sec = Discipline::select("disciplines.id", 'disciplines.libelle')
-            ->join("users", "users.discip_second", "disciplines.id")
-            ->where(
-                [
-                    // ["users.discip_princ", "=", "disciplines.id"],
-                    ['users.role_id', '=', 3],
-                    ['users.id', '=', auth()->user()->id],
-                ]
-            )
-            // ->dd();
-            ->get();
+
         // $idMatiere = 1;
         // foreach ($disciplines as $key => $value)
         //     foreach ($disciplines_sec as $key => $value)
@@ -181,26 +171,17 @@ class EvaluationController extends Controller
         //     ['id', '=', auth()->user()->id],
         // ])->get();
         // dd($profs);
-        // $discipsecond = Discipline::select("disciplines.id", 'disciplines.libelle')
-        //     ->join("users", "users.discip_second", "disciplines.id")
 
-        //     ->where(
-        //         [
-        //             ['users.role_id', '=', 3],
-        //             ['users.id', '=', auth()->user()->id],
-        //         ]
-        //     )
-        //     ->get();
         $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
             ->join("users", "eleves.created_by", "users.id")
             ->select(
                 "eleves.id",
-                "eleves.nom",
-                "eleves.prenoms",
+                // "users.nom",
+                // "users.prenoms",
                 "eleves.matricule",
-                "niveaus.id as nId",
-                "niveaus.libelle",
+                "niveaux.id as nId",
+                "niveaux.libelle",
             )
             // ->dd();
             ->get();
@@ -350,27 +331,27 @@ class EvaluationController extends Controller
             $idclas = $value->idclas;
         }
         $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
             ->join("users", "eleves.created_by", "users.id")
             ->select(
                 "eleves.id as codeEleve",
-                "eleves.nom as nomEleve",
-                "eleves.prenoms as prenomsEleve",
+                // "eleves.nom as nomEleve",
+                // "eleves.prenoms as prenomsEleve",
                 "eleves.matricule",
-                "niveaus.id as nId",
-                "niveaus.libelle",
+                "niveaux.id as nId",
+                "niveaux.libelle",
             )
             ->where("eleves.classe_id", $idclas)
-            ->orderBy("nomEleve", "asc")
-            ->orderBy("prenomsEleve", "asc")
+            // ->orderBy("nomEleve", "asc")
+            // ->orderBy("prenomsEleve", "asc")
             // ->dd();
             ->get();
         // dd($eleves);
         $disciplines = Discipline::select("disciplines.id", 'disciplines.libelle')
-            ->join("users", "users.discip_princ", "disciplines.id")
+            ->join("users", "users.discipline_id", "disciplines.id")
             ->where(
                 [
-                    // ["users.discip_princ", "=", "disciplines.id"],
+                    // ["users.discipline_id", "=", "disciplines.id"],
                     ['users.role_id', '=', 3],
                     ['users.id', '=', auth()->user()->id],
                 ]
@@ -378,17 +359,7 @@ class EvaluationController extends Controller
             // ->dd();
             ->get();
         // dd($disciplines);
-        $disciplines_sec = Discipline::select("disciplines.id", 'disciplines.libelle')
-            ->join("users", "users.discip_second", "disciplines.id")
-            ->where(
-                [
-                    // ["users.discip_princ", "=", "disciplines.id"],
-                    ['users.role_id', '=', 3],
-                    ['users.id', '=', auth()->user()->id],
-                ]
-            )
-            // ->dd();
-            ->get();
+
         // dd($request->all());
         if ($request->paramClasse != "" && $request->paramEleve != "" && $request->paramDiscipline != "") {
             $evaluations = Evaluation::join("eleves", "evaluations.eleve_id", "eleves.id")
@@ -403,8 +374,8 @@ class EvaluationController extends Controller
                     "evaluations.coef_disc",
                     "evaluations.note",
                     "evaluations.eleve_id as codeEleve",
-                    "eleves.nom as nomEleve",
-                    "eleves.prenoms as prenomsEleve",
+                    // "eleves.nom as nomEleve",
+                    // "eleves.prenoms as prenomsEleve",
                     "classes.libelle as classe",
                     "periodes.libelle as periode",
                     "evaluations.user_id as codeProf",
@@ -415,8 +386,8 @@ class EvaluationController extends Controller
                     "evaluations.updated_at"
                 )
                 ->where("classes.id", $request->paramClasse)
-                ->where("eleves.id", $request->paramEleve)
-                ->orderBy("nomEleve", "asc")
+                // ->where("eleves.id", $request->paramEleve)
+                // ->orderBy("nomEleve", "asc")
                 ->orderBy("prenomsEleve", "asc")
                 // ->groupBy("id", "type", "coef", "discipline_id", "coef_disc", "note", "eleve_id", "user_id", "periode_id", "created_at", "updated_at")
                 ->paginate(20);
@@ -435,8 +406,8 @@ class EvaluationController extends Controller
                     "evaluations.coef_disc",
                     "evaluations.note",
                     "evaluations.eleve_id as codeEleve",
-                    "eleves.nom as nomEleve",
-                    "eleves.prenoms as prenomsEleve",
+                    // "eleves.nom as nomEleve",
+                    // "eleves.prenoms as prenomsEleve",
                     "classes.libelle as classe",
                     "periodes.libelle as periode",
                     "evaluations.user_id as codeProf",
@@ -517,17 +488,17 @@ class EvaluationController extends Controller
         // dd($id);
         $data = Eleve::where('classe_id', $classe)->get(["id as elId", "nom as firstname", "prenoms as lastname", "matricule as ref"]);
         // dd($data);
-        $niveau = Niveau::join("classes", "classes.niveau_id", "niveaus.id")
+        $niveau = Niveau::join("classes", "classes.niveau_id", "niveaux.id")
             ->select(
                 [
-                    "niveaus.id as nivId",
-                    "niveaus.libelle as niveau",
+                    "niveaux.id as nivId",
+                    "niveaux.libelle as niveau",
                 ]
             )
             ->where("classes.id", "=", $classe)
             ->get();
-        $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-            ->join("classes", "classes.niveau_id", "niveaus.id")
+        $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+            ->join("classes", "classes.niveau_id", "niveaux.id")
             ->select(
                 [
                     "series.id as serId",
@@ -550,17 +521,17 @@ class EvaluationController extends Controller
             ->orderBy("lastname", "asc")
             ->get(["id as elId", "nom as firstname", "prenoms as lastname", "matricule as ref"]) : null;
         // dd($data);
-        // $niveau = Niveau::join("classes", "classes.niveau_id", "niveaus.id")
+        // $niveau = Niveau::join("classes", "classes.niveau_id", "niveaux.id")
         //     ->select(
         //         [
-        //             "niveaus.id as nivId",
-        //             "niveaus.libelle as niveau",
+        //             "niveaux.id as nivId",
+        //             "niveaux.libelle as niveau",
         //         ]
         //     )
         //     ->where("classes.id", "=", $classe)
         //     ->get();
-        // $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-        //     ->join("classes", "classes.niveau_id", "niveaus.id")
+        // $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+        //     ->join("classes", "classes.niveau_id", "niveaux.id")
         //     ->select(
         //         [
         //             "series.id as serId",
@@ -590,8 +561,8 @@ class EvaluationController extends Controller
                 "evaluations.coef_disc",
                 "evaluations.note",
                 "evaluations.eleve_id as codeEleve",
-                "eleves.nom as nomEleve",
-                "eleves.prenoms as prenomsEleve",
+                // "eleves.nom as nomEleve",
+                // "eleves.prenoms as prenomsEleve",
                 "classes.libelle as classe",
                 "periodes.libelle as periode",
                 "evaluations.user_id as codeProf",

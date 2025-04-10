@@ -104,8 +104,8 @@ class InterventionController extends Controller
     public function create()
     {
         //
-        $classes = Classe::join("niveaus", "classes.niveau_id", "niveaus.id")
-            ->join("cycles", "niveaus.cycle_id", "cycles.id")
+        $classes = Classe::join("niveaux", "classes.niveau_id", "niveaux.id")
+            ->join("cycles", "niveaux.cycle_id", "cycles.id")
             ->join("annee_academiques", "cycles.annee_academique_id", "annee_academiques.id")
             ->join("etablissements", "cycles.etablissement_id", "etablissements.id")
             ->select("classes.id", 'classes.libelle')

@@ -5,7 +5,7 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h4>Niveaux<span class="text text-danger" id="cmp">({{$niveaus->total()}})</span></h4>
+                <h4>Niveaux<span class="text text-danger" id="cmp">({{$niveaux->total()}})</span></h4>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Niveaux</h4>
-                            <a href="{{route('niveaus.create')}}" class="btn btn-primary">+ Ajouter</a>
+                            <a href="{{route('niveaux.create')}}" class="btn btn-primary">+ Ajouter</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -50,14 +50,14 @@
                                         <tr>
                                             <td>&nbsp;</td>
                                         </tr>
-                                        @forelse($niveaus as $item)
+                                        @forelse($niveaux as $item)
                                         <tr>
                                             <td>{{$item->annee}}</td>
                                             <td>{{$item->Etab}}</td>
                                             <td>{{$item->niveau}}</td>
                                             <td>{{$item->etabCreated}}</td>
                                             <td>
-                                                {{--<a href="{{route('niveaus.edit',$item->id)}}"
+                                                {{--<a href="{{route('niveaux.edit',$item->id)}}"
                                                 class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <a href="javascript:void(0);" class="btn btn-xs sharp btn-danger"><i
                                                         class="fa fa-trash"></i></a>--}}
@@ -72,7 +72,7 @@
                                 </table>
                                 <hr>
                                 <div class="row" style="float:right;">
-                                    <nav class="nav text-right">{{$niveaus->links('pagination::bootstrap-4')}}</nav>
+                                    <nav class="nav text-right">{{$niveaux->links('pagination::bootstrap-4')}}</nav>
                                 </div>
                             </div>
                         </div>

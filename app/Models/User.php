@@ -41,7 +41,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'passwords',
+        'password',
         'remember_token',
     ];
 
@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'passwords' => 'hashed',
+        'password' => 'hashed',
     ];
 
 
@@ -68,11 +68,18 @@ class User extends Authenticatable
     public static function discipline($param = null)
     {
 
-        return   in_array(auth()->user()->role_id, [1, 3, 4]) ?
+        return  !is_null($param) ? (in_array(auth()->user()->role_id, [1, 3, 4]) ?
             Discipline::select("id as codeMat", "libelle as matiere")->whereIn("id", json_decode($param))->get() :
+            false) :
             false;
 
         // return $this->belongsTo(Discipline::class, 'discipline_id', 'id')->dd();
 
+    }
+
+
+    public function eleve()
+    {
+        return $this->belongsTo(Eleve::class);
     }
 }

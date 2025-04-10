@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('libelle');
             $table->timestamps();
         });
+
+        Schema::table('examens', function (Blueprint $table) {
+            $table->foreignId('type_examen_id')->references('id')->on('type_examens')->nullable();
+            //
+        });
     }
 
     /**

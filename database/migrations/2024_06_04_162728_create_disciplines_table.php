@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('disciplines', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
+            $table->string('type_disc')->nullable();
             $table->timestamps();
         });
     }

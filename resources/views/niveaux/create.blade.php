@@ -26,7 +26,7 @@
 
                 </div>
                 <div class="card-body">
-                    <form action="{{route('niveaus.store') }}" method="post" id="addNiveauForm"
+                    <form action="{{route('niveaux.store') }}" method="post" id="addNiveauForm"
                         enctype="multipart/form-data">
                         @csrf
 

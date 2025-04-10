@@ -46,15 +46,15 @@ class EvaluationController extends Controller
             $idclas = $value->idclas;
         }
         $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
             ->join("users", "eleves.created_by", "users.id")
             ->select(
                 "eleves.id as codeEleve",
                 "eleves.nom as nomEleve",
                 "eleves.prenoms as prenomsEleve",
                 "eleves.matricule",
-                "niveaus.id as nId",
-                "niveaus.libelle",
+                "niveaux.id as nId",
+                "niveaux.libelle",
             )
             ->where("eleves.classe_id", $idclas)
             ->orderBy("nomEleve", "asc")
@@ -157,15 +157,15 @@ class EvaluationController extends Controller
             )
             ->get();
         $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
             ->join("users", "eleves.created_by", "users.id")
             ->select(
                 "eleves.id",
                 "eleves.nom",
                 "eleves.prenoms",
                 "eleves.matricule",
-                "niveaus.id as nId",
-                "niveaus.libelle",
+                "niveaux.id as nId",
+                "niveaux.libelle",
             )
             // ->dd();
             ->get();
@@ -325,15 +325,15 @@ class EvaluationController extends Controller
             $idclas = $value->idclas;
         }
         $eleves = Eleve::join("classes", "eleves.classe_id", "classes.id")
-            ->join("niveaus", "classes.niveau_id", "niveaus.id")
+            ->join("niveaux", "classes.niveau_id", "niveaux.id")
             ->join("users", "eleves.created_by", "users.id")
             ->select(
                 "eleves.id as codeEleve",
                 "eleves.nom as nomEleve",
                 "eleves.prenoms as prenomsEleve",
                 "eleves.matricule",
-                "niveaus.id as nId",
-                "niveaus.libelle",
+                "niveaux.id as nId",
+                "niveaux.libelle",
             )
             ->where("eleves.classe_id", $idclas)
             ->orderBy("nomEleve", "asc")
@@ -492,17 +492,17 @@ class EvaluationController extends Controller
         // dd($id);
         $data = Eleve::where('classe_id', $classe)->get(["id as elId", "nom as firstname", "prenoms as lastname", "matricule as ref"]);
         // dd($data);
-        $niveau = Niveau::join("classes", "classes.niveau_id", "niveaus.id")
+        $niveau = Niveau::join("classes", "classes.niveau_id", "niveaux.id")
             ->select(
                 [
-                    "niveaus.id as nivId",
-                    "niveaus.libelle as niveau",
+                    "niveaux.id as nivId",
+                    "niveaux.libelle as niveau",
                 ]
             )
             ->where("classes.id", "=", $classe)
             ->get();
-        $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-            ->join("classes", "classes.niveau_id", "niveaus.id")
+        $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+            ->join("classes", "classes.niveau_id", "niveaux.id")
             ->select(
                 [
                     "series.id as serId",
@@ -525,17 +525,17 @@ class EvaluationController extends Controller
             ->orderBy("lastname", "asc")
             ->get(["id as elId", "nom as firstname", "prenoms as lastname", "matricule as ref"]) : null;
         // dd($data);
-        // $niveau = Niveau::join("classes", "classes.niveau_id", "niveaus.id")
+        // $niveau = Niveau::join("classes", "classes.niveau_id", "niveaux.id")
         //     ->select(
         //         [
-        //             "niveaus.id as nivId",
-        //             "niveaus.libelle as niveau",
+        //             "niveaux.id as nivId",
+        //             "niveaux.libelle as niveau",
         //         ]
         //     )
         //     ->where("classes.id", "=", $classe)
         //     ->get();
-        // $series = Serie::join("niveaus", "series.niveau_id", "niveaus.id")
-        //     ->join("classes", "classes.niveau_id", "niveaus.id")
+        // $series = Serie::join("niveaux", "series.niveau_id", "niveaux.id")
+        //     ->join("classes", "classes.niveau_id", "niveaux.id")
         //     ->select(
         //         [
         //             "series.id as serId",

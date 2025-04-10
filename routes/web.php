@@ -57,9 +57,9 @@ Route::middleware('auth')->group(function () {
     // discipline
     Route::resource('disciplines', DisciplineController::class);
     // get cycle by year
-    Route::get("/niveaus/create/{yearId}", [NiveauController::class, "getCycleByYear"]);
+    Route::get("/niveaux/create/{yearId}", [NiveauController::class, "getCycleByYear"]);
     // niveau
-    Route::resource('niveaus', NiveauController::class);
+    Route::resource('niveaux', NiveauController::class);
     // get niveau for serie
     Route::get("/series/create/{yearI}", [SerieController::class, "getNiveauByYear"]);
     // series
