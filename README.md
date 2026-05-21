@@ -28,6 +28,7 @@ smag/
 ├── config/ # Fichiers de configuration (database.php, app.php)
 
 ├── database/ # Migrations, seeders, factories
+
 ├── public/ # Point d'entrée (index.php) et assets (CSS, JS, images)
 
 ├── resources/ # Vues Blade, fichiers CSS/JS bruts
